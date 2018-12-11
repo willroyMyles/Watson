@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="469.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.Controller">
+   <children>
+      <TextField fx:id="sendBox" layoutX="14.0" layoutY="428.0" onAction="#sendMessage" prefHeight="27.0" prefWidth="486.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="100.0" />
+      <Button fx:id="sendButton" layoutX="507.0" layoutY="428.0" mnemonicParsing="false" onAction="#sendMessage" prefHeight="27.0" prefWidth="83.0" text="Button" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="10.0" />
+      <ScrollPane fx:id="scrollView" layoutX="14.0" layoutY="14.0" prefHeight="402.0" prefWidth="571.0" style="-fx-background-color: red;" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="14.0" />
+   </children>
+</AnchorPane>
