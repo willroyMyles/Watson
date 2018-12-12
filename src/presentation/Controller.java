@@ -1,11 +1,14 @@
 package presentation;
 
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,8 +24,14 @@ public class Controller implements Initializable {
 
 
     private Intermediary intermediary;
+    private Stage stage;
 
 
+    @FXML
+    private void closeApp(ActionEvent event){
+        stage.close();
+        intermediary.closeSession();
+    }
 
 
     public void sendMessage(){
@@ -41,5 +50,9 @@ public class Controller implements Initializable {
 
     public void setIntermediary(Intermediary intermediary) {
         this.intermediary = intermediary;
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
     }
 }

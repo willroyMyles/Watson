@@ -55,7 +55,7 @@ public class Intermediary {
         MessageResponse response = assistant.message(options).execute();
 
         String msg = response.getOutput().getGeneric().get(0).getText();
-        System.out.println(msg);
+        System.out.println(response);
     }
 
     public void sendMessage(String text){

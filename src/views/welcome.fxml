@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="379.0" styleClass="background" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.Controller">
+   <children>
+      <Pane id="pane" fx:id="topPane" prefHeight="162.0" prefWidth="379.0" styleClass="topPane" stylesheets="@../style.css">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="69.0" layoutY="48.0" prefHeight="17.0" prefWidth="251.0" styleClass="H1" text="Module Options" textAlignment="CENTER" textFill="#ebf6fff0">
+               <font>
+                  <Font name="Apple Symbols" size="36.0" />
+               </font>
+            </Label>
+            <Button fx:id="close" contentDisplay="CENTER" defaultButton="true" layoutX="334.0" layoutY="2.0" mnemonicParsing="false" onAction="#closeApp" prefHeight="14.0" prefWidth="14.0" styleClass="closeButton">
+               <graphic>
+                  <ImageView fitHeight="46.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icons8-delete-filled-100.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </Pane>
+      <ScrollPane layoutY="162.0" prefHeight="397.0" prefWidth="379.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="394.0" prefWidth="376.0">
+               <children>
+                  <Pane layoutX="20.0" layoutY="21.0" prefHeight="145.0" prefWidth="336.0" styleClass="cards" stylesheets="@../style.css">
+                     <children>
+                        <Button fx:id="specializationButton" layoutY="1.0" mnemonicParsing="false" prefHeight="145.0" prefWidth="337.0" styleClass="closeButton" visible="false" />
+                        <ImageView fitHeight="55.0" fitWidth="72.0" layoutX="262.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true" styleClass="imageCard">
+                           <image>
+                              <Image url="@../images/icons8-idea-128.png" />
+                           </image>
+                           <effect>
+                              <ColorAdjust hue="1.0" saturation="0.05" />
+                           </effect>
+                        </ImageView>
+                        <Label layoutX="14.0" layoutY="19.0" prefHeight="38.0" prefWidth="176.0" styleClass="H2" text="Specialization " />
+                        <Separator layoutX="10.0" layoutY="87.0" prefHeight="5.0" prefWidth="318.0" />
+                        <Label layoutX="14.0" layoutY="103.0" prefHeight="38.0" prefWidth="318.0" styleClass="H3" text="Having trouble choosing your specialization? let us help!" wrapText="true" />
+                        <Label layoutX="16.0" layoutY="53.0" prefHeight="17.0" prefWidth="118.0" styleClass="H3" text="Recommended" />
+                     </children>
+                  </Pane>
+                  <Pane layoutX="20.0" layoutY="197.0" prefHeight="145.0" prefWidth="336.0" styleClass="cards" stylesheets="@../style.css">
+                     <children>
+                        <Button fx:id="specializationButton1" layoutY="1.0" mnemonicParsing="false" prefHeight="145.0" prefWidth="337.0" styleClass="closeButton" visible="false" />
+                        <ImageView fitHeight="55.0" fitWidth="72.0" layoutX="262.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true" styleClass="imageCard">
+                           <image>
+                              <Image url="@../images/icons8-bookmark-128.png" />
+                           </image>
+                           <effect>
+                              <ColorAdjust hue="1.0" saturation="0.05" />
+                           </effect>
+                        </ImageView>
+                        <Label layoutX="14.0" layoutY="19.0" prefHeight="38.0" prefWidth="176.0" styleClass="H2" text="Module Selection" />
+                        <Separator layoutX="10.0" layoutY="87.0" prefHeight="5.0" prefWidth="318.0" />
+                        <Label layoutX="14.0" layoutY="103.0" prefHeight="38.0" prefWidth="318.0" styleClass="H3" text="Click here to begin selection of modules" wrapText="true" />
+                        <Label layoutX="16.0" layoutY="53.0" prefHeight="17.0" prefWidth="118.0" text="Urgent">
+                           <styleClass>
+                              <String fx:value="H3" />
+                              <String fx:value="urgent" />
+                           </styleClass>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
