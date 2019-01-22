@@ -30,7 +30,7 @@ public class Driver extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/welcome.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/main.fxml"));
         AnchorPane root = loader.load();
 
         intermediary = new Intermediary();

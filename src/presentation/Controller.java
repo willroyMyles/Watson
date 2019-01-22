@@ -1,5 +1,6 @@
 package presentation;
 
+import engine.Salaries;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -45,7 +46,11 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        try {
+            Salaries.getSalary("Software-Developer");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void setIntermediary(Intermediary intermediary) {
