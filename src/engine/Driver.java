@@ -40,7 +40,7 @@ public class Driver extends Application {
         controller.setStage(primaryStage);
         intermediary.authorize();
         intermediary.createSession();;
-        intermediary.testCode();
+        //intermediary.testCode();
        // intermediary.closeSession();
 
         root.setOnMousePressed(new EventHandler<MouseEvent>() {
