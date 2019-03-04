@@ -13,6 +13,6 @@ public class Responses {
 
 
     public String text ="";
-    public Options options;
+    public Options options = new Options();
 
 }

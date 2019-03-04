@@ -1,13 +1,18 @@
 package presentation;
 
+import engine.EntityManager;
+import engine.Responses;
 import engine.Salaries;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.NodeOrientation;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -27,6 +32,16 @@ public class Controller implements Initializable {
 
 
     private Intermediary intermediary;
+
+    public EntityManager getEntityManager() {
+        return entityManager;
+    }
+
+    public void setEntityManager(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
+
+    private EntityManager entityManager;
     private Stage stage;
 
 
@@ -40,7 +55,7 @@ public class Controller implements Initializable {
     public void sendMessage(){
         System.out.print(sendBox.getText());
         addMessageToView(sendBox.getText(),0);
-        addMessageToView(intermediary.sendMessage(sendBox.getText()),1);
+        intermediary.sendMessage(sendBox.getText());
         sendBox.clear();
     }
 
@@ -62,13 +77,35 @@ public class Controller implements Initializable {
 
     }
 
-    public void 
+    public void addOptionsToView(Responses.Options opt){
+        Button btn = new Button();
+        btn.setText(opt.label);
+
+        btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                intermediary.sendMessage(opt.inputText);
+                System.out.println(opt.inputText);
+            }
+        });
+
+        Label lab = new Label(opt.title);
+        lab.setWrapText(true);
+
+        HBox pane = new HBox();
+        pane.setMinSize(gridPane.getWidth(),19);
+        pane.getChildren().add(lab);
+        pane.getChildren().add(btn);
+        pane.setPrefSize(gridPane.getWidth(),19);
+        gridPane.addRow(gridPane.getRowCount()+1, pane);
+    }
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
             Salaries.getSalary("Software-Developer");
+            gridPane.setVgap(5.0);
         } catch (Exception e) {
             e.printStackTrace();
         }

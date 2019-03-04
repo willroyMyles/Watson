@@ -1,6 +1,7 @@
 package presentation;
 
 //import com.ibm.watson.developer_cloud.assistant.v2.model.InputData;
+
 import com.ibm.watson.developer_cloud.assistant.v2.Assistant;
 import com.ibm.watson.developer_cloud.assistant.v2.model.*;
 import com.ibm.watson.developer_cloud.service.security.IamOptions;
@@ -20,6 +21,7 @@ public class Intermediary {
     final private static String version =           "2018-12-00";
 //    final private static String assistantID =       "aa0de638-de5a-4f98-bb26-79a275270269";
     final private static String assistantID =       "e7e28cbb-43ba-4f9a-b7b1-246c3ef7efa2";
+    final private static String workspaceId =       "d311a758-cc6c-4ded-832d-5a1e5969aa82";
     private String sessionID = "";
     private Assistant assistant;
 
@@ -69,7 +71,7 @@ public class Intermediary {
         System.out.println(response);
     }
 
-    public String sendMessage(String text){
+    public void sendMessage(String text){
         MessageInput input = new MessageInput.Builder()
                 .messageType("text")
                 .text(text)
@@ -82,41 +84,42 @@ public class Intermediary {
         MessageResponse response = assistant.message(options).execute();
 
 
-
-
-        String msg = response.getOutput().getGeneric().get(0).getText();
-
-
         List<DialogRuntimeResponseGeneric> list = response.getOutput().getGeneric();
+        List<RuntimeEntity> list1               = response.getOutput().getEntities();
 
-        for( int i =0; i < list.size(); i++){
-            if(list.get(i).getText() == "pause") continue;;
-            msg = list.get(i).getText();
-        }
+        appropriateResponse(list);
+        appropriateResponse(list1, 0);
 
 
 
         System.out.println(response);
-        return msg;
     }
 
+    public void appropriateResponse(List<RuntimeEntity> list, int val){
+        for (int i = 0; i < list.size(); i++) {
+            String entity = list.get(i).getEntity();
+            String value = list.get(0).getValue();
+            con.getEntityManager().insert(entity,value);
+        }
+    }
 
     public void appropriateResponse(List<DialogRuntimeResponseGeneric> list){
 
-        Responses response = new Responses();
 
         //examine generics
         for (int i = 0; i < list.size(); i++) {
             switch(list.get(i).getResponseType()){
                 case "text":
-                    response.text = list.get(i).getText();
-                    con.addMessageToView(response.text,2);
+                    con.addMessageToView(list.get(i).getText(),2);
                     textAvailable = true;
                     break;
                 case "option" :
+                    Responses response = new Responses();
+
                     response.options.title = list.get(i).getTitle();
                     response.options.label = list.get(i).getOptions().get(0).getLabel();
-                    response.options.label = list.get(i).getOptions().get(0).getValue().getInput().text();
+                    response.options.inputText = list.get(i).getOptions().get(0).getValue().getInput().text();
+                    con.addOptionsToView(response.options);
                     optionAvailable = true;
                     break;
 

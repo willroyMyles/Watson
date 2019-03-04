@@ -19,6 +19,7 @@ import static javafx.application.Application.launch;
 public class Driver extends Application {
 
     Intermediary intermediary;
+    EntityManager entityManager;
     private double xOffset = 0;
     private double yOffset = 0;
 
@@ -34,9 +35,12 @@ public class Driver extends Application {
         AnchorPane root = loader.load();
 
         intermediary = new Intermediary();
+        entityManager = new EntityManager();
+
 
         Controller controller = loader.<Controller>getController();
         controller.setIntermediary(intermediary);
+        controller.setEntityManager(entityManager);
         controller.setStage(primaryStage);
         intermediary.authorize();
         intermediary.createSession();;
